@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tock Labs • Estudio de Software Independiente</title>
-    <meta name="description" content="Tock Labs: Estudio independiente de software y herramientas digitales. Desarrolladores de Afinador Simples para Android.">
+    <title>Tock Labs • Estudio de Software & Productos Digitales</title>
+    <meta name="description" content="Tock Labs: Estudio independiente de software y herramientas digitales. Creadores de Afinador Simples, TockTexture Studio y IAssetflow.">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -48,7 +48,7 @@
 <body class="min-h-screen py-6 sm:py-12 px-3 sm:px-6 selection:bg-accent selection:text-black">
 
     <!-- Contenedor Enmarcado Central (Estilo Clásico) -->
-    <div class="max-w-4xl mx-auto bg-frame border border-frameBorder rounded-2xl shadow-2xl p-6 sm:p-12 space-y-10">
+    <div class="max-w-4xl mx-auto bg-frame border border-frameBorder rounded-2xl shadow-2xl p-6 sm:p-12 space-y-12">
 
         <!-- Cabecera Tradicional -->
         <header class="text-center space-y-4">
@@ -61,14 +61,14 @@
             </h1>
 
             <p class="text-xs sm:text-sm text-textMuted max-w-xl mx-auto leading-relaxed">
-                Desarrollo de aplicaciones móviles y herramientas digitales de alta precisión con enfoque en procesamiento local y privacidad.
+                Desarrollo de aplicaciones móviles, extensiones para navegadores y utilidades digitales con enfoque en procesamiento local, rendimiento y privacidad.
             </p>
 
             <!-- Barra de Navegación Clásica con Viñetas -->
             <nav class="pt-2 text-xs sm:text-sm font-medium text-textMuted flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
                 <a href="#afinador" class="hover:text-accent transition-colors">[ Afinador Simples ]</a>
                 <span class="text-frameBorder">•</span>
-                <a href="#proyectos" class="hover:text-accent transition-colors">[ En Desarrollo ]</a>
+                <a href="#extensiones" class="hover:text-accent transition-colors">[ Extensiones Chrome ]</a>
                 <span class="text-frameBorder">•</span>
                 <a href="#manifiesto" class="hover:text-accent transition-colors">[ Filosofía ]</a>
                 <span class="text-frameBorder">•</span>
@@ -80,13 +80,13 @@
             <hr class="border-t border-frameBorder/80 pt-2">
         </header>
 
-        <!-- SECCIÓN I: PRODUCTO DESTACADO (AFINADOR SIMPLES) -->
+        <!-- SECCIÓN I: APLICACIÓN MÓVIL (AFINADOR SIMPLES) -->
         <section id="afinador" class="space-y-6">
             <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-frameBorder pb-2">
                 <h2 class="text-xl sm:text-2xl font-bold text-white font-editorial">
-                    I. Producto Destacado: Afinador Simples
+                    I. Aplicación Móvil: Afinador Simples
                 </h2>
-                <span class="text-xs text-accent font-medium">Disponible en Google Play • Versión 1.2.1</span>
+                <span class="text-xs text-accent font-medium">Google Play Store • Versión 1.2.1</span>
             </div>
 
             <!-- Imagen Oficial del Producto (Centrada y Enmarcada) -->
@@ -129,33 +129,59 @@
             </div>
         </section>
 
-        <!-- SECCIÓN II: PROYECTOS EN DESARROLLO -->
-        <section id="proyectos" class="space-y-4 pt-4 border-t border-frameBorder">
-            <div class="border-b border-frameBorder pb-2">
+        <!-- SECCIÓN II: EXTENSIONES DE NAVEGADOR (CHROME WEB STORE) -->
+        <section id="extensiones" class="space-y-6 pt-4 border-t border-frameBorder">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-frameBorder pb-2">
                 <h2 class="text-xl sm:text-2xl font-bold text-white font-editorial">
-                    II. Proyectos en Desarrollo
+                    II. Extensiones de Navegador & Utilidades Web
                 </h2>
+                <span class="text-xs text-accent font-medium">Publicadas en Chrome Web Store</span>
             </div>
 
-            <div class="space-y-3 text-xs sm:text-sm">
-                <div class="p-4 rounded-xl bg-page/70 border border-frameBorder flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                    <div>
-                        <div class="font-bold text-white text-sm">TockTexture Studio</div>
-                        <div class="text-xs text-textMuted mt-0.5">Herramienta de optimización y procesamiento local de texturas para desarrollo de videojuegos (POT scaling, Y-flip, empaquetado de canales PBR).</div>
+            <div class="space-y-5 text-xs sm:text-sm">
+                <!-- PRODUCTO 1: TOCKTEXTURE STUDIO -->
+                <div class="p-5 rounded-xl bg-page border border-frameBorder space-y-3">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <img src="img/tocktexture_logo.png" alt="TockTexture Logo" class="w-10 h-10 rounded-lg bg-black/40 border border-frameBorder p-1 object-contain">
+                            <div>
+                                <h3 class="text-base font-bold text-white font-editorial">TockTexture Studio</h3>
+                                <span class="text-xs text-accent font-medium">GameDev Texture Processor • 100% Client-Side</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <a href="https://tocktexture.com/" target="_blank" class="px-3 py-1.5 rounded-lg bg-frame border border-frameBorder hover:border-accent text-slate-200 text-xs font-semibold transition-all">
+                                🌐 tocktexture.com
+                            </a>
+                            <a href="https://chromewebstore.google.com/detail/lmmiaoedpmagoinbfanfefhhaabchjcc?utm_source=item-share-cb" target="_blank" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all shadow-sm">
+                                🧩 Chrome Web Store
+                            </a>
+                        </div>
                     </div>
-                    <span class="inline-block px-2.5 py-1 rounded-md bg-accentAmber/10 border border-accentAmber/30 text-accentAmber text-[11px] font-semibold whitespace-nowrap self-start sm:self-center">
-                        En Desarrollo
-                    </span>
+                    <p class="text-textMuted leading-relaxed text-xs">
+                        Motor de procesamiento y optimización de texturas para videojuegos que opera de manera 100% local en el navegador mediante Web Workers. Incluye escalado Power of Two (POT), inversión Y-Flip en Normal Maps (DirectX / OpenGL), corrección de Alpha Bleed y empaquetado de canales PBR / RMA.
+                    </p>
                 </div>
 
-                <div class="p-4 rounded-xl bg-page/70 border border-frameBorder flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                    <div>
-                        <div class="font-bold text-white text-sm">TockPractice</div>
-                        <div class="text-xs text-textMuted mt-0.5">Suite web de práctica musical integrada en el navegador: bucles A-B de precisión en audio/video y temporizador de estudio.</div>
+                <!-- PRODUCTO 2: IASSETFLOW -->
+                <div class="p-5 rounded-xl bg-page border border-frameBorder space-y-3">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <img src="img/iassetflow_icon.png" alt="IAssetflow Icon" class="w-10 h-10 rounded-lg bg-black/40 border border-frameBorder p-1 object-contain">
+                            <div>
+                                <h3 class="text-base font-bold text-white font-editorial">IAssetflow</h3>
+                                <span class="text-xs text-accent font-medium">AI E-Commerce Media & Catalog Assistant</span>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://chromewebstore.google.com/detail/eolegdphdhojkinalobeenmlkdpbgdfc?utm_source=item-share-cb" target="_blank" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all shadow-sm inline-block">
+                                🧩 Chrome Web Store
+                            </a>
+                        </div>
                     </div>
-                    <span class="inline-block px-2.5 py-1 rounded-md bg-accentAmber/10 border border-accentAmber/30 text-accentAmber text-[11px] font-semibold whitespace-nowrap self-start sm:self-center">
-                        En Desarrollo
-                    </span>
+                    <p class="text-textMuted leading-relaxed text-xs">
+                        Extensión de productividad para e-commerce. Permite extraer imágenes y videos en alta resolución desde marketplaces (AliExpress, Amazon, Walmart) y utilizar IA para generar títulos SEO, descripciones optimizadas y catálogos en formato CSV compatibles con Shopify y WooCommerce en 1 clic.
+                    </p>
                 </div>
             </div>
         </section>
@@ -166,7 +192,7 @@
                 III. Filosofía del Estudio
             </h2>
             <p class="text-xs sm:text-sm text-textMuted leading-relaxed">
-                En <strong>Tock Labs</strong> creemos en la honestidad del software independiente: herramientas que hacen exactamente lo que prometen con rapidez y ligereza. Todo el procesamiento de audio y datos se ejecuta de forma estrictamente local en la memoria de tu dispositivo; no implementamos telemetría invasiva, no exigimos inicios de sesión innecesarios y respetamos plenamente la privacidad de tu equipo.
+                En <strong>Tock Labs</strong> creemos en la honestidad del software independiente: herramientas que hacen exactamente lo que prometen con rapidez y ligereza. Todo el procesamiento de audio, imágenes y datos se ejecuta de forma estrictamente local en tu propio dispositivo; no implementamos telemetría invasiva, no exigimos inicios de sesión innecesarios y respetamos plenamente la privacidad de tu equipo.
             </p>
         </section>
 
