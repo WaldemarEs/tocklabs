@@ -1,171 +1,115 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidad - Tock Labs</title>
-    <style>
-        :root {
-            --bg-dark: #0E1118;
-            --bg-card: #161A23;
-            --border-color: #262D3D;
-            --text-main: #F0F4FC;
-            --text-muted: #8E99AD;
-            --accent-cyan: #00E5FF;
-            --accent-amber: #FFB300;
+    <title>Política de Privacidad • Tock Labs</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyan: '#00E5FF',
+                        amber: '#FFB300',
+                        brand: {
+                            darker: '#06080D',
+                            dark: '#0A0E17',
+                            card: '#121724',
+                            border: '#1E2638'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
         }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 0 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 40px 32px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-        header {
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
-        }
-        .brand {
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-cyan);
-            margin-bottom: 8px;
-        }
-        h1 {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 8px;
-        }
-        .updated {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-        .intro {
-            font-size: 16px;
-            color: var(--text-main);
-            margin-bottom: 30px;
-            padding: 16px;
-            background: rgba(0, 229, 255, 0.05);
-            border-left: 3px solid var(--accent-cyan);
-            border-radius: 6px;
-        }
-        h2 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--accent-amber);
-            margin-top: 28px;
-            margin-bottom: 12px;
-        }
-        p {
-            font-size: 15px;
-            color: var(--text-muted);
-            margin-bottom: 14px;
-        }
-        ul {
-            list-style: none;
-            padding-left: 0;
-            margin-bottom: 16px;
-        }
-        li {
-            font-size: 15px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
-        }
-        li::before {
-            content: "•";
-            color: var(--accent-cyan);
-            font-weight: bold;
-            position: absolute;
-            left: 4px;
-        }
-        a {
-            color: var(--accent-cyan);
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: var(--accent-cyan);
-            font-weight: 600;
-            font-size: 14px;
-        }
-    </style>
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <a href="index.html" class="back-link">← Volver al inicio</a>
-        <header>
-            <div class="brand">Tock Labs</div>
-            <h1>Política de Privacidad</h1>
-            <div class="updated">Afinador Simple • Última actualización: Noviembre 2026</div>
+<body class="bg-brand-darker text-slate-200 min-h-screen py-12 px-4 sm:px-6">
+
+    <div class="max-w-3xl mx-auto bg-brand-card border border-brand-border rounded-3xl p-8 sm:p-12 shadow-2xl">
+        <a href="index.html" class="inline-flex items-center gap-2 text-xs font-bold text-cyan uppercase tracking-wider mb-8 hover:underline">
+            ← Volver a Tock Labs
+        </a>
+
+        <header class="border-b border-brand-border pb-6 mb-8">
+            <div class="text-xs font-bold tracking-widest text-cyan uppercase mb-2">Tock Labs • Privacidad</div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Política de Privacidad</h1>
+            <p class="text-sm text-slate-400 mt-2">Afinador Simple • Última actualización: Noviembre 2026</p>
         </header>
 
-        <div class="intro">
+        <div class="p-4 rounded-xl bg-cyan/5 border-l-4 border-cyan text-sm text-slate-300 mb-8 leading-relaxed">
             En <strong>Tock Labs</strong> valoramos y respetamos plenamente tu privacidad. Esta aplicación ha sido diseñada bajo el principio de <strong>procesamiento estrictamente local</strong> y mínimo acceso a datos.
         </div>
 
-        <h2>1. Uso del Micrófono</h2>
-        <p>El permiso de acceso al micrófono del dispositivo se utiliza única y exclusivamente para:</p>
-        <ul>
-            <li>Procesar en tiempo real la frecuencia acústica de tu instrumento mediante el afinador.</li>
-            <li>Permitir la grabación de tus ensayos cuando pulsas deliberadamente el botón de grabar.</li>
-        </ul>
-        <p><strong>Privacidad absoluta:</strong> En ningún momento se transmiten, almacenan o analizan muestras de audio en servidores remotos o en la nube. Todo el procesamiento matemático de pitch ocurre estrictamente en la memoria RAM de tu dispositivo de manera efímera.</p>
+        <section class="space-y-8 text-sm text-slate-300 leading-relaxed">
+            <div>
+                <h2 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                    <span class="text-amber">1.</span> Uso del Micrófono
+                </h2>
+                <p class="mb-3 text-slate-400">El permiso de acceso al micrófono del dispositivo se utiliza única y exclusivamente para:</p>
+                <ul class="list-disc list-inside space-y-1.5 text-slate-300 ml-2 mb-3">
+                    <li>Procesar en tiempo real la frecuencia acústica de tu instrumento mediante el afinador.</li>
+                    <li>Permitir la grabación de tus ensayos cuando pulsas deliberadamente el botón de grabar.</li>
+                </ul>
+                <p class="text-xs bg-slate-900/60 p-3 rounded-lg border border-slate-800 text-slate-400">
+                    <strong class="text-cyan">Seguridad matemática:</strong> En ningún momento se transmiten, almacenan o analizan muestras de audio en servidores remotos o en la nube. Todo el procesamiento matemático de pitch ocurre estrictamente en la memoria RAM de tu dispositivo de manera efímera.
+                </p>
+            </div>
 
-        <h2>2. Almacenamiento de Grabaciones</h2>
-        <p>Las grabaciones de audio que realices permanecen de manera 100% privada y local en el almacenamiento interno protegido de tu propio teléfono. Eres libre de compartirlas o eliminarlas cuando lo desees.</p>
+            <div>
+                <h2 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                    <span class="text-amber">2.</span> Almacenamiento de Grabaciones
+                </h2>
+                <p class="text-slate-400">
+                    Las grabaciones de audio que realices permanecen de manera 100% privada y local en el almacenamiento interno protegido de tu propio teléfono. Eres libre de compartirlas o eliminarlas cuando lo desees.
+                </p>
+            </div>
 
-        <h2>3. No Recopilación de Datos Personales</h2>
-        <p>Nuestra aplicación:</p>
-        <ul>
-            <li>No requiere registro de usuario ni inicio de sesión.</li>
-            <li>No solicita correos electrónicos, nombres ni números telefónicos.</li>
-            <li>No recopila contactos, ubicación geográfica ni datos sensibles.</li>
-        </ul>
+            <div>
+                <h2 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                    <span class="text-amber">3.</span> No Recopilación de Datos Personales
+                </h2>
+                <p class="mb-2 text-slate-400">Nuestra aplicación:</p>
+                <ul class="list-disc list-inside space-y-1 text-slate-300 ml-2">
+                    <li>No requiere registro de usuario ni inicio de sesión.</li>
+                    <li>No solicita correos electrónicos, nombres ni números telefónicos.</li>
+                    <li>No recopila contactos, ubicación geográfica ni datos sensibles.</li>
+                </ul>
+            </div>
 
-        <h2>4. Publicidad y Facturación Segura</h2>
-        <p>En las versiones gratuitas financiadas por publicidad, se utilizan los servicios estándar de <strong>Google AdMob</strong> cumpliendo estrictamente con las políticas de privacidad y protección de datos de Google Play.</p>
-        <p>Para la compra integrada de eliminación de publicidad, las transacciones se realizan de forma cifrada y directa a través del sistema oficial de <strong>Google Play Billing</strong>. Tock Labs no tiene acceso a tus datos bancarios ni números de tarjeta de crédito.</p>
+            <div>
+                <h2 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                    <span class="text-amber">4.</span> Publicidad y Facturación Segura
+                </h2>
+                <p class="text-slate-400 mb-2">
+                    En las versiones gratuitas financiadas por publicidad, se utilizan los servicios estándar de <strong>Google AdMob</strong> cumpliendo estrictamente con las políticas de privacidad y protección de datos de Google Play.
+                </p>
+                <p class="text-slate-400">
+                    Para la compra integrada de eliminación de publicidad, las transacciones se realizan de forma cifrada y directa a través del sistema oficial de <strong>Google Play Billing</strong>. Tock Labs no tiene acceso a tus datos bancarios ni números de tarjeta de crédito.
+                </p>
+            </div>
 
-        <h2>5. Contacto</h2>
-        <p>Si tienes preguntas, sugerencias o inquietudes sobre esta política de privacidad o sobre el funcionamiento de la aplicación, puedes ponerte en contacto con nosotros en:</p>
-        <p><strong>Correo electrónico de soporte:</strong> <a href="mailto:tocklabs@gmail.com">tocklabs@gmail.com</a></p>
+            <div>
+                <h2 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                    <span class="text-amber">5.</span> Contacto y Soporte
+                </h2>
+                <p class="text-slate-400">
+                    Si tienes dudas o sugerencias respecto a esta política de privacidad o sobre el funcionamiento de la aplicación, puedes contactarnos en:
+                </p>
+                <p class="mt-2 font-mono text-cyan font-bold">tocklabs@gmail.com</p>
+            </div>
+        </section>
 
-        <footer>
+        <footer class="border-t border-brand-border mt-10 pt-6 text-center text-xs text-slate-500">
             © 2026 Tock Labs. Todos los derechos reservados.
         </footer>
     </div>
+
 </body>
 </html>
-
