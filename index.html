@@ -1,352 +1,256 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth dark">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tock Labs • Afinador Simple & Herramientas Musicales</title>
-    <meta name="description" content="Afinador Simple de Tock Labs: afinador acústico para 11 instrumentos incluyendo Cuatro Venezolano, metrónomo profesional y grabador de ensayos en Android.">
+    <title>TOCK LABS // INDEPENDENT SOFTWARE STUDIO</title>
+    <meta name="description" content="Tock Labs: Estudio independiente de software y herramientas acústicas de alta precisión. Creadores de Afinador Simple para Android.">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        cyan: {
-                            DEFAULT: '#00E5FF',
-                            50: '#E0FCFF',
-                            400: '#33EBFF',
-                            500: '#00E5FF',
-                            600: '#00B4D8'
-                        },
-                        amber: {
-                            DEFAULT: '#FFB300',
-                            400: '#FFC107',
-                            500: '#FFB300'
-                        },
-                        brand: {
-                            darker: '#06080D',
-                            dark: '#0A0E17',
-                            card: '#121724',
-                            cardHover: '#181F30',
-                            border: '#1E2638'
+                        term: {
+                            bg: '#080B10',
+                            panel: '#0E131C',
+                            border: '#1E293B',
+                            borderBright: '#334155',
+                            cyan: '#00E5FF',
+                            amber: '#FFB300',
+                            green: '#10B981',
+                            red: '#EF4444',
+                            text: '#E2E8F0',
+                            muted: '#94A3B8'
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', '"Fira Code"', 'Consolas', 'monospace'],
+                        sans: ['Inter', 'system-ui', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .glow-cyan {
-            box-shadow: 0 0 50px -10px rgba(0, 229, 255, 0.25);
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #080B10;
+            color: #E2E8F0;
         }
-        .glow-amber {
-            box-shadow: 0 0 40px -10px rgba(255, 179, 0, 0.25);
+        /* Efecto scanline muy suave del viejo internet */
+        .scanlines {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 3px, 6px 100%;
         }
-        .grid-bg {
-            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 24px 24px;
+        /* Cursor titilante retro */
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        /* Cinta de precaución retro */
+        .hazard-stripes {
+            background: repeating-linear-gradient(
+                -45deg,
+                rgba(255, 179, 0, 0.15),
+                rgba(255, 179, 0, 0.15) 10px,
+                rgba(14, 19, 28, 0.8) 10px,
+                rgba(14, 19, 28, 0.8) 20px
+            );
         }
     </style>
 </head>
-<body class="bg-brand-darker text-slate-100 min-h-screen flex flex-col selection:bg-cyan selection:text-slate-900">
+<body class="bg-term-bg min-h-screen flex flex-col scanlines selection:bg-term-cyan selection:text-black">
 
-    <!-- Navbar Flotante -->
-    <nav class="sticky top-0 z-50 backdrop-blur-xl bg-brand-darker/80 border-b border-brand-border/60">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-2.5 group">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center font-black text-slate-950 text-base shadow-lg shadow-cyan/20 group-hover:scale-105 transition-transform">
-                    T
-                </div>
-                <span class="font-bold tracking-wider text-lg text-white">TOCK<span class="text-cyan">LABS</span></span>
-            </a>
-
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
-                <a href="#afinador" class="hover:text-cyan transition-colors">Afinador</a>
-                <a href="#instrumentos" class="hover:text-cyan transition-colors">11 Instrumentos</a>
-                <a href="#metronomo" class="hover:text-cyan transition-colors">Metrónomo</a>
-                <a href="privacy.html" class="hover:text-cyan transition-colors">Privacidad</a>
-                <a href="app-ads.txt" class="hover:text-cyan transition-colors">app-ads.txt</a>
+    <!-- Barra de Estado Superior Retro -->
+    <header class="border-b-2 border-term-border bg-term-panel/90 sticky top-0 z-50 text-xs">
+        <div class="max-w-5xl mx-auto px-4 py-2.5 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <span class="w-2.5 h-2.5 rounded-none bg-term-green inline-block animate-pulse"></span>
+                <span class="font-bold text-white tracking-widest">TOCK_LABS<span class="text-term-cyan">.SYS</span></span>
+                <span class="text-term-muted hidden sm:inline">[NODE_01 // HOSTED_STATIC]</span>
             </div>
-
-            <div>
-                <a href="https://play.google.com/store/apps/details?id=com.tocklabs.afinadorsimple" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-cyan text-brand-darker font-bold text-xs uppercase tracking-wider hover:bg-cyan-400 transition-all shadow-md shadow-cyan/20 hover:scale-105 active:scale-95">
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a1.597 1.597 0 0 1-.22-.843V2.657c0-.317.08-.609.22-.843zm11.235 11.238l2.096 2.096-12.01 6.863 9.914-8.959zm0-2.104L4.93 1.989l12.01 6.863-2.096 2.096zm1.485 1.052l3.433 1.962c.983.562.983 1.478 0 2.04l-3.433 1.962-1.92-1.92 1.92-2.044z"/></svg>
-                    Google Play
-                </a>
-            </div>
+            <nav class="flex items-center gap-4 sm:gap-6 font-medium text-term-muted text-[11px] sm:text-xs">
+                <a href="#apps" class="hover:text-term-cyan transition-colors">[ 01_APPS ]</a>
+                <a href="#extensions" class="hover:text-term-amber transition-colors">[ 02_LABS ]</a>
+                <a href="privacy.html" class="hover:text-term-cyan transition-colors">[ 03_PRIVACY ]</a>
+                <a href="app-ads.txt" class="hover:text-term-cyan transition-colors">[ 04_APP-ADS ]</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <main class="flex-1">
-        <section class="relative pt-12 pb-20 overflow-hidden grid-bg">
-            <!-- Glows decorativos de fondo -->
-            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan/15 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute top-1/3 right-10 w-72 h-72 bg-amber/10 rounded-full blur-3xl pointer-events-none"></div>
+    <main class="max-w-5xl mx-auto px-4 py-8 sm:py-12 flex-1 w-full space-y-10">
 
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-                <div class="text-center max-w-3xl mx-auto mb-14">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-card border border-brand-border/80 text-cyan text-xs font-semibold tracking-wide uppercase mb-6 glow-cyan">
-                        <span class="w-2 h-2 rounded-full bg-cyan animate-pulse"></span>
-                        Versión 1.2.1 • Ahora con Cuatro Venezolano
+        <!-- Ventana de Inicio / Terminal Prompt -->
+        <section class="border-2 border-term-border bg-term-panel rounded-none shadow-[4px_4px_0px_0px_#1E293B]">
+            <div class="bg-slate-900 px-4 py-2 border-b-2 border-term-border flex items-center justify-between text-xs">
+                <div class="flex items-center gap-2">
+                    <span class="inline-block w-3 h-3 bg-red-500/80"></span>
+                    <span class="inline-block w-3 h-3 bg-yellow-500/80"></span>
+                    <span class="inline-block w-3 h-3 bg-green-500/80"></span>
+                    <span class="text-term-muted ml-2 font-bold tracking-wider">TERMINAL // ABOUT_TOCKLABS</span>
+                </div>
+                <span class="text-[10px] text-term-cyan font-bold tracking-widest uppercase">SYS_REV: 2026.11</span>
+            </div>
+
+            <div class="p-5 sm:p-7 text-xs sm:text-sm space-y-3 leading-relaxed">
+                <p class="text-term-cyan font-bold">
+                    tocklabs@root:~$ <span class="text-white">init --studio --philosophy</span>
+                </p>
+                <p class="text-term-text font-sans sm:font-mono">
+                    <strong class="text-white">TOCK LABS</strong> es un estudio independiente enfocado en el desarrollo de 
+                    <span class="text-term-cyan font-bold">herramientas acústicas, software y utilidades digitales</span> de alta precisión. 
+                    Trabajamos bajo la filosofía del procesamiento local: sin telemetría invasiva, sin servidores intermedios y con respeto total a la privacidad de tu dispositivo.
+                </p>
+                <div class="pt-2 flex flex-wrap gap-2 text-[11px]">
+                    <span class="px-2 py-1 bg-black/60 border border-term-border text-term-green font-bold">● PRIVACIDAD_LOCAL</span>
+                    <span class="px-2 py-1 bg-black/60 border border-term-border text-term-cyan font-bold">● CERO_BLOATWARE</span>
+                    <span class="px-2 py-1 bg-black/60 border border-term-border text-term-amber font-bold">● ALTA_PRECISIÓN</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 01: PRODUCTO DESTACADO (AFINADOR SIMPLE) -->
+        <section id="apps" class="border-2 border-term-cyan bg-term-panel rounded-none shadow-[6px_6px_0px_0px_rgba(0,229,255,0.25)]">
+            <!-- Barra de título de la ventana -->
+            <div class="bg-term-cyan text-slate-950 px-4 py-2 flex items-center justify-between font-bold text-xs uppercase tracking-wider">
+                <div class="flex items-center gap-2">
+                    <span>■ PRODUCT_01: AFINADOR SIMPLES [ANDROID]</span>
+                </div>
+                <span class="bg-slate-950 text-term-cyan px-2 py-0.5 text-[10px] tracking-widest font-black">STATUS: VERSIÓN 1.2.1 DISPONIBLE</span>
+            </div>
+
+            <div class="p-5 sm:p-7 space-y-6">
+                <!-- Imagen Oficial del Usuario -->
+                <div class="border-2 border-term-border bg-black p-1 relative overflow-hidden group">
+                    <img src="img/hero_banner.jpg" alt="Afinador Simples - Afinador, Metrónomo y Grabador de Alta Precisión" class="w-full h-auto block object-cover">
+                </div>
+
+                <!-- Detalles del Producto -->
+                <div class="space-y-4">
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-black text-white tracking-wide">
+                            AFINADOR SIMPLES
+                        </h2>
+                        <p class="text-term-cyan text-xs sm:text-sm font-bold tracking-wider mt-0.5">
+                            AFINADOR CROMÁTICO • METRÓNOMO PROFESIONAL • GRABADOR DE ENSAYOS
+                        </p>
                     </div>
 
-                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-                        Afinación acústica de <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-blue-400">precisión milimétrica</span>.
-                    </h1>
-
-                    <p class="text-lg sm:text-xl text-slate-400 font-normal leading-relaxed mb-8">
-                        La suite móvil esencial para músicos: afinador cromático ultrasensible con detección en Hz y centésimas, metrónomo profesional y grabador de ensayos en una sola app.
+                    <p class="text-term-text text-xs sm:text-sm leading-relaxed font-sans sm:font-mono">
+                        Suite acústica completa diseñada para músicos de escenario, estudio y ensayo. Detección matemática ultra rápida en Hz y centésimas, metrónomo interactivo con tiempos clásicos y grabador de ensayos con visor de ondas integrado en la misma pantalla.
                     </p>
 
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <a href="https://play.google.com/store/apps/details?id=com.tocklabs.afinadorsimple" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-400 text-brand-darker font-bold text-sm hover:from-cyan-400 hover:to-cyan-300 transition-all shadow-xl shadow-cyan/25 hover:-translate-y-0.5">
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a1.597 1.597 0 0 1-.22-.843V2.657c0-.317.08-.609.22-.843zm11.235 11.238l2.096 2.096-12.01 6.863 9.914-8.959zm0-2.104L4.93 1.989l12.01 6.863-2.096 2.096zm1.485 1.052l3.433 1.962c.983.562.983 1.478 0 2.04l-3.433 1.962-1.92-1.92 1.92-2.044z"/></svg>
-                            Descargar en Google Play
-                        </a>
-                        <a href="#instrumentos" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-card hover:bg-brand-cardHover border border-brand-border text-slate-300 font-semibold text-sm transition-all">
-                            Explorar 11 Instrumentos ↓
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Mockup de Smartphone con la App -->
-                <div id="afinador" class="max-w-xs sm:max-w-sm mx-auto relative">
-                    <!-- Marco del Teléfono -->
-                    <div class="relative bg-brand-card border-4 border-slate-800 rounded-[44px] p-4 shadow-2xl shadow-cyan/15 glow-cyan">
-                        <!-- Isla superior / notch -->
-                        <div class="w-24 h-4 bg-slate-900 rounded-full mx-auto mb-4 border border-slate-800"></div>
-
-                        <!-- Pantalla interactiva simulada -->
-                        <div class="bg-brand-darker rounded-[32px] p-5 border border-brand-border/60 text-center relative overflow-hidden">
-                            <!-- Barra superior: Selector de Instrumento & Mic -->
-                            <div class="flex items-center justify-between gap-2 mb-6 text-xs">
-                                <div class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 font-bold text-cyan flex items-center gap-1.5">
-                                    <span>Cuatro Venezolano</span>
-                                    <span class="text-[10px]">▾</span>
-                                </div>
-                                <div class="font-bold text-cyan tracking-wider">440.0 Hz</div>
-                                <div class="w-7 h-7 rounded-lg bg-cyan/10 border border-cyan/40 text-cyan flex items-center justify-center">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 02-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
-                                </div>
-                            </div>
-
-                            <!-- Cuerdas del Cuatro -->
-                            <div class="grid grid-cols-4 gap-1.5 mb-8">
-                                <div class="p-1.5 rounded bg-slate-900 border border-slate-800 text-[11px] font-bold text-slate-300">4: La3</div>
-                                <div class="p-1.5 rounded bg-slate-900 border border-slate-800 text-[11px] font-bold text-slate-300">3: Re4</div>
-                                <div class="p-1.5 rounded bg-cyan/10 border border-cyan text-[11px] font-extrabold text-cyan">2: Fa#4</div>
-                                <div class="p-1.5 rounded bg-slate-900 border border-slate-800 text-[11px] font-bold text-slate-300">1: Si3</div>
-                            </div>
-
-                            <!-- Indicador Circular de Afinación -->
-                            <div class="w-44 h-44 mx-auto rounded-full border-4 border-slate-800 flex flex-col items-center justify-center relative my-2 bg-gradient-to-b from-brand-card to-transparent">
-                                <div class="absolute inset-0 rounded-full border-4 border-cyan/40 animate-pulse"></div>
-                                <div class="text-5xl font-black text-cyan tracking-tight mb-1">Fa#</div>
-                                <div class="text-xs font-bold text-cyan/80 tracking-widest uppercase">AFINADO • 0 cents</div>
-                                <div class="text-[11px] text-slate-500 font-semibold mt-1">369.99 Hz</div>
-                            </div>
-
-                            <!-- Dron y referencia -->
-                            <div class="mt-6 pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs text-slate-400">
-                                <span>Calibración: A4=440Hz</span>
-                                <span class="px-2 py-0.5 rounded bg-slate-800 text-cyan font-bold">Dron: La</span>
-                            </div>
+                    <!-- Mención de Instrumentos y Cuatro Venezolano -->
+                    <div class="p-4 bg-black/60 border-2 border-term-borderBright space-y-2">
+                        <div class="flex items-center gap-2 text-term-amber font-bold text-xs">
+                            <span>⭐</span>
+                            <span class="uppercase tracking-wider">SOPORTE PARA 11 INSTRUMENTOS CALIBRADOS:</span>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección de Instrumentos -->
-        <section id="instrumentos" class="py-20 border-t border-brand-border/60 bg-brand-dark">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6">
-                <div class="text-center max-w-2xl mx-auto mb-14">
-                    <span class="text-cyan text-xs font-bold uppercase tracking-widest">Catálogo Completo</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4">11 Instrumentos Calibrados</h2>
-                    <p class="text-slate-400 text-sm sm:text-base">Afinaciones exactas con notación científica y frecuencias matemáticas de referencia internacional ($A_4 = 440\text{ Hz}$).</p>
-                </div>
-
-                <!-- Grid de Instrumentos -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                    <!-- Cuatro Venezolano -->
-                    <div class="p-6 rounded-2xl bg-brand-card border-2 border-cyan/40 hover:border-cyan transition-all relative overflow-hidden group shadow-lg shadow-cyan/5">
-                        <div class="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-cyan/15 text-cyan text-[11px] font-extrabold tracking-wider uppercase">⭐ Especial</div>
-                        <h3 class="text-xl font-bold text-white mb-1">Cuatro Venezolano</h3>
-                        <p class="text-xs text-cyan font-semibold mb-4">Afinación Reentrante Tradicional (Cambur Pintón)</p>
-                        <div class="space-y-2 text-xs">
-                            <div class="flex justify-between py-1 border-b border-brand-border/50 text-slate-300">
-                                <span class="font-bold">4.ª Cuerda (Arriba):</span> <span class="text-cyan font-mono font-bold">La3 (A3) • 220.00 Hz</span>
-                            </div>
-                            <div class="flex justify-between py-1 border-b border-brand-border/50 text-slate-300">
-                                <span class="font-bold">3.ª Cuerda:</span> <span class="text-cyan font-mono font-bold">Re4 (D4) • 293.66 Hz</span>
-                            </div>
-                            <div class="flex justify-between py-1 border-b border-brand-border/50 text-slate-300">
-                                <span class="font-bold">2.ª Cuerda (Aguda):</span> <span class="text-cyan font-mono font-bold">Fa#4 (F#4) • 369.99 Hz</span>
-                            </div>
-                            <div class="flex justify-between py-1 text-slate-300">
-                                <span class="font-bold">1.ª Cuerda (Grave):</span> <span class="text-cyan font-mono font-bold">Si3 (B3) • 246.94 Hz</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Guitarra -->
-                    <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-slate-700 transition-all">
-                        <h3 class="text-xl font-bold text-white mb-1">Guitarra</h3>
-                        <p class="text-xs text-slate-400 font-semibold mb-4">Afinación Estándar (6 cuerdas)</p>
-                        <div class="text-xs text-slate-300 font-mono space-y-1">
-                            <div>6: Mi2 (82.41 Hz) • 5: La2 (110.00 Hz)</div>
-                            <div>4: Re3 (146.83 Hz) • 3: Sol3 (196.00 Hz)</div>
-                            <div>2: Si3 (246.94 Hz) • 1: Mi4 (329.63 Hz)</div>
-                        </div>
-                    </div>
-
-                    <!-- Bajo 4C y 5C -->
-                    <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-slate-700 transition-all">
-                        <h3 class="text-xl font-bold text-white mb-1">Bajo Eléctrico</h3>
-                        <p class="text-xs text-slate-400 font-semibold mb-4">Modos 4 y 5 Cuerdas con Si subgrave</p>
-                        <div class="text-xs text-slate-300 font-mono space-y-1">
-                            <div class="text-slate-400 font-sans font-semibold">Bajo 5C:</div>
-                            <div>5: Si0 (30.87 Hz) • 4: Mi1 (41.20 Hz)</div>
-                            <div>3: La1 (55.00 Hz) • 2: Re2 (73.42 Hz) • 1: Sol2 (98.00 Hz)</div>
-                        </div>
-                    </div>
-
-                    <!-- Ukelele -->
-                    <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-slate-700 transition-all">
-                        <h3 class="text-xl font-bold text-white mb-1">Ukelele</h3>
-                        <p class="text-xs text-slate-400 font-semibold mb-4">Afinación Estándar C (G-C-E-A)</p>
-                        <div class="text-xs text-slate-300 font-mono space-y-1">
-                            <div>4: Sol4 (392.00 Hz) • 3: Do4 (261.63 Hz)</div>
-                            <div>2: Mi4 (329.63 Hz) • 1: La4 (440.00 Hz)</div>
-                        </div>
-                    </div>
-
-                    <!-- Cavaquinho -->
-                    <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-slate-700 transition-all">
-                        <h3 class="text-xl font-bold text-white mb-1">Cavaquinho</h3>
-                        <p class="text-xs text-slate-400 font-semibold mb-4">Afinación Tradicional Brasileña (D-G-B-D)</p>
-                        <div class="text-xs text-slate-300 font-mono space-y-1">
-                            <div>4: Re4 (293.66 Hz) • 3: Sol4 (392.00 Hz)</div>
-                            <div>2: Si4 (493.88 Hz) • 1: Re5 (587.33 Hz)</div>
-                        </div>
-                    </div>
-
-                    <!-- Mandolina & Violín -->
-                    <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-slate-700 transition-all">
-                        <h3 class="text-xl font-bold text-white mb-1">Violín & Mandolina</h3>
-                        <p class="text-xs text-slate-400 font-semibold mb-4">Afinación por Quintas Justas (G-D-A-E)</p>
-                        <div class="text-xs text-slate-300 font-mono space-y-1">
-                            <div>4: Sol3 (196.00 Hz) • 3: Re4 (293.66 Hz)</div>
-                            <div>2: La4 (440.00 Hz) • 1: Mi5 (659.25 Hz)</div>
-                        </div>
-                    </div>
-
-                    <!-- Banjo -->
-                    <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-slate-700 transition-all">
-                        <h3 class="text-xl font-bold text-white mb-1">Banjo (5 Cuerdas)</h3>
-                        <p class="text-xs text-slate-400 font-semibold mb-4">Open G Tradicional con bordón agudo</p>
-                        <div class="text-xs text-slate-300 font-mono space-y-1">
-                            <div>5: Sol4 (392.00 Hz) • 4: Re3 (146.83 Hz)</div>
-                            <div>3: Sol3 (196.00 Hz) • 2: Si3 (246.94 Hz) • 1: Re4 (293.66 Hz)</div>
-                        </div>
-                    </div>
-
-                    <!-- Violonchelo -->
-                    <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-slate-700 transition-all">
-                        <h3 class="text-xl font-bold text-white mb-1">Violonchelo</h3>
-                        <p class="text-xs text-slate-400 font-semibold mb-4">Cello Clásico (C-G-D-A)</p>
-                        <div class="text-xs text-slate-300 font-mono space-y-1">
-                            <div>4: Do2 (65.41 Hz) • 3: Sol2 (98.00 Hz)</div>
-                            <div>2: Re3 (146.83 Hz) • 1: La3 (220.00 Hz)</div>
-                        </div>
-                    </div>
-
-                    <!-- Cromático -->
-                    <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-slate-700 transition-all">
-                        <h3 class="text-xl font-bold text-white mb-1">Modo Cromático</h3>
-                        <p class="text-xs text-slate-400 font-semibold mb-4">Detección Libre de Todo el Rango Sonoro</p>
-                        <p class="text-xs text-slate-400">Detecta cualquier frecuencia desde 20 Hz hasta 5000 Hz, identificando notas, bemoles, sostenidos y octavas automáticamente.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección de Metrónomo y Grabador -->
-        <section id="metronomo" class="py-20 border-t border-brand-border/60">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <!-- Tarjeta Metrónomo -->
-                    <div class="p-8 rounded-3xl bg-brand-card border border-brand-border relative overflow-hidden glow-amber">
-                        <div class="w-12 h-12 rounded-xl bg-amber/15 border border-amber/40 flex items-center justify-center text-amber text-xl font-black mb-6">
-                            ⏱️
-                        </div>
-                        <h3 class="text-2xl font-extrabold text-white mb-3">Metrónomo Profesional</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                            Diseñado con precisión de muestras de audio directas. Cambia de tempo rápidamente con el nuevo selector desplegable de tempos clásicos italianos (Largo, Andante, Moderato, Allegro, Presto).
+                        <p class="text-xs text-slate-300 font-sans sm:font-mono leading-relaxed">
+                            Incluye el <strong class="text-term-cyan font-bold">Cuatro Venezolano</strong> con su afinación tradicional reentrante (<em class="text-white">Cambur Pintón: La3 - Re4 - Fa#4 - Si3</em>), además de Guitarra (6 cuerdas), Bajo Eléctrico (4 y 5 cuerdas con Si subgrave), Ukelele, Cavaquinho, Mandolina, Banjo (5 cuerdas), Violín, Violonchelo y Modo Cromático universal.
                         </p>
-                        <ul class="space-y-3 text-xs text-slate-300">
-                            <li class="flex items-center gap-2"><span class="text-amber font-bold">✓</span> Compases personalizables (numerador y denominador deslizables).</li>
-                            <li class="flex items-center gap-2"><span class="text-amber font-bold">✓</span> Subdivisiones en tiempo real (negras, corcheas, tresillos, semicorcheas).</li>
-                            <li class="flex items-center gap-2"><span class="text-amber font-bold">✓</span> Modo vibración y señales visuales de alta visibilidad para escenario.</li>
-                        </ul>
                     </div>
 
-                    <!-- Tarjeta Grabador de Ensayos -->
-                    <div class="p-8 rounded-3xl bg-brand-card border border-brand-border relative overflow-hidden">
-                        <div class="w-12 h-12 rounded-xl bg-red-500/15 border border-red-500/40 flex items-center justify-center text-red-400 text-xl font-black mb-6">
-                            🎙️
+                    <!-- 3 Pilares del Banner -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs">
+                        <div class="p-3 bg-slate-900/80 border border-term-border text-center">
+                            <div class="text-term-cyan font-bold mb-1">🎯 PRECISIÓN ABSOLUTA</div>
+                            <div class="text-[11px] text-term-muted">Tolerancia de 1 centésima y detección Hz en tiempo real.</div>
                         </div>
-                        <h3 class="text-2xl font-extrabold text-white mb-3">Grabador de Ensayos</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                            Graba tus ideas musicales y pasajes difíciles al instante sin salir de la aplicación ni cambiar de pantalla.
-                        </p>
-                        <ul class="space-y-3 text-xs text-slate-300">
-                            <li class="flex items-center gap-2"><span class="text-cyan font-bold">✓</span> Visor dinámico de onda sonora viva de lado a lado.</li>
-                            <li class="flex items-center gap-2"><span class="text-cyan font-bold">✓</span> Reproducción en bucle continuo para estudiar solos o acordes.</li>
-                            <li class="flex items-center gap-2"><span class="text-cyan font-bold">✓</span> Almacenamiento 100% privado en tu teléfono; sin subida a la nube.</li>
-                        </ul>
+                        <div class="p-3 bg-slate-900/80 border border-term-border text-center">
+                            <div class="text-term-amber font-bold mb-1">⏱️ METRÓNOMO PRO</div>
+                            <div class="text-[11px] text-term-muted">Compases configurables y tempos clásicos (Largo, Allegro, etc.).</div>
+                        </div>
+                        <div class="p-3 bg-slate-900/80 border border-term-border text-center">
+                            <div class="text-term-green font-bold mb-1">🎙️ GRABADOR LOCAL</div>
+                            <div class="text-[11px] text-term-muted">Visor de onda en vivo y bucle de audio sin salir de la app.</div>
+                        </div>
+                    </div>
+
+                    <!-- Botón de Descarga Estilo Retro-Tech -->
+                    <div class="pt-4 flex flex-col sm:flex-row items-center gap-4">
+                        <a href="https://play.google.com/store/apps/details?id=com.tocklabs.afinadorsimple" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-3.5 bg-term-cyan text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider border-2 border-term-cyan hover:bg-white hover:border-white transition-colors shadow-[4px_4px_0px_0px_#FFFFFF]">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a1.597 1.597 0 0 1-.22-.843V2.657c0-.317.08-.609.22-.843zm11.235 11.238l2.096 2.096-12.01 6.863 9.914-8.959zm0-2.104L4.93 1.989l12.01 6.863-2.096 2.096zm1.485 1.052l3.433 1.962c.983.562.983 1.478 0 2.04l-3.433 1.962-1.92-1.92 1.92-2.044z"/></svg>
+                            &gt; DESCARGAR EN GOOGLE PLAY &lt;
+                        </a>
+                        <span class="text-[11px] text-term-muted">
+                            [ Android 8.0+ // Sin registro requerido // 100% Libre de rastreo ]
+                        </span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Final -->
-        <section class="py-20 border-t border-brand-border/60 bg-gradient-to-b from-brand-dark to-brand-darker text-center">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6">
-                <h2 class="text-3xl sm:text-5xl font-black text-white mb-6">Empieza a afinar con precisión hoy mismo</h2>
-                <p class="text-slate-400 text-base sm:text-lg mb-8 max-w-xl mx-auto">
-                    Disponible de forma gratuita en Google Play. Sin registro, sin suscripciones forzadas y con respeto total a tu privacidad.
-                </p>
-                <a href="https://play.google.com/store/apps/details?id=com.tocklabs.afinadorsimple" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-cyan text-brand-darker font-bold text-base hover:bg-cyan-400 transition-all shadow-xl shadow-cyan/25 hover:scale-105">
-                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a1.597 1.597 0 0 1-.22-.843V2.657c0-.317.08-.609.22-.843zm11.235 11.238l2.096 2.096-12.01 6.863 9.914-8.959zm0-2.104L4.93 1.989l12.01 6.863-2.096 2.096zm1.485 1.052l3.433 1.962c.983.562.983 1.478 0 2.04l-3.433 1.962-1.92-1.92 1.92-2.044z"/></svg>
-                    Obtener en Google Play
-                </a>
+        <!-- SECCIÓN 02: PRÓXIMOS LANZAMIENTOS (EN CONSTRUCCIÓN) -->
+        <section id="extensions" class="border-2 border-term-border bg-term-panel rounded-none shadow-[4px_4px_0px_0px_#1E293B]">
+            <div class="bg-slate-900 px-4 py-2 border-b-2 border-term-border flex items-center justify-between text-xs">
+                <span class="font-bold text-term-amber tracking-wider uppercase">■ TOCK_LABS_PIPELINE // PRÓXIMOS PROYECTOS</span>
+                <span class="text-term-muted text-[10px]">[INDEX_QUEUE: 02]</span>
+            </div>
+
+            <div class="p-5 sm:p-7 grid grid-cols-1 md:grid-cols-2 gap-5">
+                <!-- Caja 1: Extensiones -->
+                <div class="border-2 border-term-border p-5 bg-black/40 space-y-3 relative overflow-hidden">
+                    <div class="hazard-stripes py-1 px-3 border border-term-amber/40 text-term-amber text-[10px] font-black uppercase tracking-widest inline-block">
+                        🚧 EN CONSTRUCCIÓN // WORK_IN_PROGRESS
+                    </div>
+                    <h3 class="text-sm font-bold text-white tracking-wide">
+                        [MOD_01] EXTENSIONES WEB
+                    </h3>
+                    <p class="text-xs text-term-muted font-sans sm:font-mono leading-relaxed">
+                        Herramientas ligeras para navegadores Chromium enfocadas en optimización local para desarrolladores de videojuegos y músicos.
+                    </p>
+                    <div class="text-[10px] text-term-amber/80 font-bold">
+                        &gt; Estado: Próximamente en Chrome Web Store
+                    </div>
+                </div>
+
+                <!-- Caja 2: Plataformas Web -->
+                <div class="border-2 border-term-border p-5 bg-black/40 space-y-3 relative overflow-hidden">
+                    <div class="hazard-stripes py-1 px-3 border border-term-amber/40 text-term-amber text-[10px] font-black uppercase tracking-widest inline-block">
+                        🚧 EN CONSTRUCCIÓN // LABS_INCUBATOR
+                    </div>
+                    <h3 class="text-sm font-bold text-white tracking-wide">
+                        [MOD_02] PLATAFORMAS & UTILIDADES WEB
+                    </h3>
+                    <p class="text-xs text-term-muted font-sans sm:font-mono leading-relaxed">
+                        Aplicaciones web independientes y procesadores de contenido orientados a la velocidad, minimalismo y consumo eficiente de recursos.
+                    </p>
+                    <div class="text-[10px] text-term-amber/80 font-bold">
+                        &gt; Estado: En fase de investigación y desarrollo
+                    </div>
+                </div>
             </div>
         </section>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-brand-border bg-brand-darker py-12 text-sm text-slate-500">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-2">
-                <span class="font-bold tracking-wider text-slate-300">TOCK<span class="text-cyan">LABS</span></span>
-                <span>• © 2026 Todos los derechos reservados.</span>
+    <!-- Footer Terminal -->
+    <footer class="border-t-2 border-term-border bg-term-panel text-xs text-term-muted py-8 mt-12">
+        <div class="max-w-5xl mx-auto px-4 space-y-4">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-term-border/60 pb-4">
+                <div class="flex items-center gap-2">
+                    <span class="text-term-cyan font-bold">tocklabs@main:~$</span>
+                    <span class="text-white">cat /etc/legal_notice</span>
+                    <span class="inline-block w-2 h-4 bg-term-cyan cursor-blink ml-1"></span>
+                </div>
+                <div class="flex flex-wrap items-center gap-4 text-[11px]">
+                    <a href="privacy.html" class="text-slate-300 hover:text-term-cyan transition-colors">[ POLÍTICA_DE_PRIVACIDAD ]</a>
+                    <a href="app-ads.txt" class="text-slate-300 hover:text-term-cyan transition-colors">[ VERIFICACIÓN_APP-ADS.TXT ]</a>
+                </div>
             </div>
-            <div class="flex items-center gap-6">
-                <a href="privacy.html" class="hover:text-cyan transition-colors">Política de Privacidad</a>
-                <a href="app-ads.txt" class="hover:text-cyan transition-colors">app-ads.txt</a>
-                <a href="mailto:tocklabs@gmail.com" class="hover:text-cyan transition-colors">Contacto: tocklabs@gmail.com</a>
+
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px]">
+                <div>© 2026 TOCK LABS. Todos los derechos reservados.</div>
+                <div>Contacto directo: <a href="mailto:tocklabs@gmail.com" class="text-term-cyan hover:underline">tocklabs@gmail.com</a></div>
             </div>
         </div>
     </footer>

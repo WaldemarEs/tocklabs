@@ -1,114 +1,128 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth dark">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidad • Tock Labs</title>
+    <title>PRIVACY_POLICY // TOCK LABS</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        cyan: '#00E5FF',
-                        amber: '#FFB300',
-                        brand: {
-                            darker: '#06080D',
-                            dark: '#0A0E17',
-                            card: '#121724',
-                            border: '#1E2638'
+                        term: {
+                            bg: '#080B10',
+                            panel: '#0E131C',
+                            border: '#1E293B',
+                            borderBright: '#334155',
+                            cyan: '#00E5FF',
+                            amber: '#FFB300',
+                            green: '#10B981',
+                            text: '#E2E8F0',
+                            muted: '#94A3B8'
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', '"Fira Code"', 'Consolas', 'monospace'],
+                        sans: ['Inter', 'system-ui', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'JetBrains Mono', monospace; background-color: #080B10; color: #E2E8F0; }
+    </style>
 </head>
-<body class="bg-brand-darker text-slate-200 min-h-screen py-12 px-4 sm:px-6">
+<body class="bg-term-bg min-h-screen py-8 sm:py-12 px-4 selection:bg-term-cyan selection:text-black">
 
-    <div class="max-w-3xl mx-auto bg-brand-card border border-brand-border rounded-3xl p-8 sm:p-12 shadow-2xl">
-        <a href="index.html" class="inline-flex items-center gap-2 text-xs font-bold text-cyan uppercase tracking-wider mb-8 hover:underline">
-            ← Volver a Tock Labs
-        </a>
-
-        <header class="border-b border-brand-border pb-6 mb-8">
-            <div class="text-xs font-bold tracking-widest text-cyan uppercase mb-2">Tock Labs • Privacidad</div>
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Política de Privacidad</h1>
-            <p class="text-sm text-slate-400 mt-2">Afinador Simple • Última actualización: Noviembre 2026</p>
-        </header>
-
-        <div class="p-4 rounded-xl bg-cyan/5 border-l-4 border-cyan text-sm text-slate-300 mb-8 leading-relaxed">
-            En <strong>Tock Labs</strong> valoramos y respetamos plenamente tu privacidad. Esta aplicación ha sido diseñada bajo el principio de <strong>procesamiento estrictamente local</strong> y mínimo acceso a datos.
+    <div class="max-w-4xl mx-auto border-2 border-term-border bg-term-panel shadow-[6px_6px_0px_0px_#1E293B]">
+        <!-- Barra de título de la ventana -->
+        <div class="bg-slate-900 px-4 py-2 border-b-2 border-term-border flex items-center justify-between text-xs">
+            <div class="flex items-center gap-2">
+                <span class="inline-block w-3 h-3 bg-red-500/80"></span>
+                <span class="inline-block w-3 h-3 bg-yellow-500/80"></span>
+                <span class="inline-block w-3 h-3 bg-green-500/80"></span>
+                <span class="text-term-muted ml-2 font-bold tracking-wider">DOC // PRIVACY_POLICY.TXT</span>
+            </div>
+            <a href="index.html" class="text-term-cyan font-bold hover:underline">[ &lt; RETURN_TO_HOME ]</a>
         </div>
 
-        <section class="space-y-8 text-sm text-slate-300 leading-relaxed">
-            <div>
-                <h2 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
-                    <span class="text-amber">1.</span> Uso del Micrófono
-                </h2>
-                <p class="mb-3 text-slate-400">El permiso de acceso al micrófono del dispositivo se utiliza única y exclusivamente para:</p>
-                <ul class="list-disc list-inside space-y-1.5 text-slate-300 ml-2 mb-3">
-                    <li>Procesar en tiempo real la frecuencia acústica de tu instrumento mediante el afinador.</li>
-                    <li>Permitir la grabación de tus ensayos cuando pulsas deliberadamente el botón de grabar.</li>
-                </ul>
-                <p class="text-xs bg-slate-900/60 p-3 rounded-lg border border-slate-800 text-slate-400">
-                    <strong class="text-cyan">Seguridad matemática:</strong> En ningún momento se transmiten, almacenan o analizan muestras de audio en servidores remotos o en la nube. Todo el procesamiento matemático de pitch ocurre estrictamente en la memoria RAM de tu dispositivo de manera efímera.
-                </p>
+        <div class="p-6 sm:p-10 space-y-8 text-xs sm:text-sm">
+            <header class="border-b border-term-border pb-6">
+                <div class="text-term-cyan text-xs font-bold tracking-widest uppercase mb-1">TOCK_LABS // LEGAL</div>
+                <h1 class="text-2xl sm:text-3xl font-black text-white">POLÍTICA DE PRIVACIDAD</h1>
+                <p class="text-term-muted mt-1 text-xs">Afinador Simple • Última actualización: Noviembre 2026</p>
+            </header>
+
+            <div class="p-4 bg-black/60 border-l-4 border-term-cyan text-slate-300 leading-relaxed font-sans sm:font-mono">
+                En <strong>Tock Labs</strong> valoramos y respetamos plenamente tu privacidad. Esta aplicación ha sido diseñada bajo el principio de <strong>procesamiento estrictamente local</strong> y mínimo acceso a datos.
             </div>
 
-            <div>
-                <h2 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
-                    <span class="text-amber">2.</span> Almacenamiento de Grabaciones
-                </h2>
-                <p class="text-slate-400">
-                    Las grabaciones de audio que realices permanecen de manera 100% privada y local en el almacenamiento interno protegido de tu propio teléfono. Eres libre de compartirlas o eliminarlas cuando lo desees.
-                </p>
-            </div>
+            <section class="space-y-6 leading-relaxed font-sans sm:font-mono text-slate-300">
+                <div>
+                    <h2 class="text-base font-bold text-white mb-2 font-mono flex items-center gap-2">
+                        <span class="text-term-amber">[01]</span> USO DEL MICRÓFONO
+                    </h2>
+                    <p class="text-term-muted mb-2">El permiso de acceso al micrófono del dispositivo se utiliza única y exclusivamente para:</p>
+                    <ul class="list-disc list-inside space-y-1 ml-2 text-slate-300">
+                        <li>Procesar en tiempo real la frecuencia acústica de tu instrumento mediante el afinador.</li>
+                        <li>Permitir la grabación de tus ensayos cuando pulsas deliberadamente el botón de grabar.</li>
+                    </ul>
+                    <p class="text-xs bg-slate-950 p-3 border border-term-border text-term-muted mt-2">
+                        <strong class="text-term-cyan">Seguridad matemática:</strong> En ningún momento se transmiten, almacenan o analizan muestras de audio en servidores remotos o en la nube. Todo el procesamiento matemático de pitch ocurre estrictamente en la memoria RAM de tu dispositivo de manera efímera.
+                    </p>
+                </div>
 
-            <div>
-                <h2 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
-                    <span class="text-amber">3.</span> No Recopilación de Datos Personales
-                </h2>
-                <p class="mb-2 text-slate-400">Nuestra aplicación:</p>
-                <ul class="list-disc list-inside space-y-1 text-slate-300 ml-2">
-                    <li>No requiere registro de usuario ni inicio de sesión.</li>
-                    <li>No solicita correos electrónicos, nombres ni números telefónicos.</li>
-                    <li>No recopila contactos, ubicación geográfica ni datos sensibles.</li>
-                </ul>
-            </div>
+                <div>
+                    <h2 class="text-base font-bold text-white mb-2 font-mono flex items-center gap-2">
+                        <span class="text-term-amber">[02]</span> ALMACENAMIENTO DE GRABACIONES
+                    </h2>
+                    <p class="text-term-muted">
+                        Las grabaciones de audio que realices permanecen de manera 100% privada y local en el almacenamiento interno protegido de tu propio teléfono. Eres libre de compartirlas o eliminarlas cuando lo desees.
+                    </p>
+                </div>
 
-            <div>
-                <h2 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
-                    <span class="text-amber">4.</span> Publicidad y Facturación Segura
-                </h2>
-                <p class="text-slate-400 mb-2">
-                    En las versiones gratuitas financiadas por publicidad, se utilizan los servicios estándar de <strong>Google AdMob</strong> cumpliendo estrictamente con las políticas de privacidad y protección de datos de Google Play.
-                </p>
-                <p class="text-slate-400">
-                    Para la compra integrada de eliminación de publicidad, las transacciones se realizan de forma cifrada y directa a través del sistema oficial de <strong>Google Play Billing</strong>. Tock Labs no tiene acceso a tus datos bancarios ni números de tarjeta de crédito.
-                </p>
-            </div>
+                <div>
+                    <h2 class="text-base font-bold text-white mb-2 font-mono flex items-center gap-2">
+                        <span class="text-term-amber">[03]</span> NO RECOPILACIÓN DE DATOS PERSONALES
+                    </h2>
+                    <ul class="list-disc list-inside space-y-1 ml-2 text-term-muted">
+                        <li>No requerimos registro de usuario ni inicio de sesión.</li>
+                        <li>No solicitamos correos electrónicos, nombres ni números telefónicos.</li>
+                        <li>No recopilamos contactos, ubicación geográfica ni datos sensibles.</li>
+                    </ul>
+                </div>
 
-            <div>
-                <h2 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
-                    <span class="text-amber">5.</span> Contacto y Soporte
-                </h2>
-                <p class="text-slate-400">
-                    Si tienes dudas o sugerencias respecto a esta política de privacidad o sobre el funcionamiento de la aplicación, puedes contactarnos en:
-                </p>
-                <p class="mt-2 font-mono text-cyan font-bold">tocklabs@gmail.com</p>
-            </div>
-        </section>
+                <div>
+                    <h2 class="text-base font-bold text-white mb-2 font-mono flex items-center gap-2">
+                        <span class="text-term-amber">[04]</span> PUBLICIDAD Y FACTURACIÓN SEGURA
+                    </h2>
+                    <p class="text-term-muted mb-2">
+                        En las versiones gratuitas con anuncios, se utilizan los servicios estándar de <strong>Google AdMob</strong> cumpliendo estrictamente con las políticas de privacidad y protección de datos de Google Play.
+                    </p>
+                    <p class="text-term-muted">
+                        Para la compra integrada de eliminación de publicidad, las transacciones se realizan de forma cifrada y directa a través del sistema oficial de <strong>Google Play Billing</strong>. Tock Labs no tiene acceso a tus datos bancarios ni números de tarjeta de crédito.
+                    </p>
+                </div>
 
-        <footer class="border-t border-brand-border mt-10 pt-6 text-center text-xs text-slate-500">
-            © 2026 Tock Labs. Todos los derechos reservados.
-        </footer>
+                <div>
+                    <h2 class="text-base font-bold text-white mb-2 font-mono flex items-center gap-2">
+                        <span class="text-term-amber">[05]</span> CONTACTO
+                    </h2>
+                    <p class="text-term-muted">
+                        Para cualquier duda o sugerencia: <a href="mailto:tocklabs@gmail.com" class="text-term-cyan font-mono font-bold hover:underline">tocklabs@gmail.com</a>
+                    </p>
+                </div>
+            </section>
+
+            <footer class="border-t border-term-border pt-6 flex justify-between items-center text-xs text-term-muted">
+                <span>© 2026 TOCK LABS.</span>
+                <a href="index.html" class="text-term-cyan hover:underline">&lt; VOLVER AL INICIO</a>
+            </footer>
+        </div>
     </div>
 
 </body>
