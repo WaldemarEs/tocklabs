@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tock Labs • Estudio de Software & Productos Digitales</title>
-    <meta name="description" content="Tock Labs: Estudio independiente de software y herramientas digitales. Creadores de Afinador Simples, TockTexture Studio y IAssetflow.">
+    <meta name="description" content="Tock Labs: Estudio independiente de software y herramientas digitales. Creadores de Afinador Simples, TockTexture Studio, TockBlog y IAssetflow.">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -61,12 +61,14 @@
             </h1>
 
             <p class="text-xs sm:text-sm text-textMuted max-w-xl mx-auto leading-relaxed">
-                Desarrollo de aplicaciones móviles, extensiones para navegadores y utilidades digitales con enfoque en procesamiento local, rendimiento y privacidad.
+                Desarrollo de aplicaciones móviles, plataformas web y extensiones para navegadores con enfoque en procesamiento local, rendimiento y privacidad.
             </p>
 
             <!-- Barra de Navegación Clásica con Viñetas -->
             <nav class="pt-2 text-xs sm:text-sm font-medium text-textMuted flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
                 <a href="#afinador" class="hover:text-accent transition-colors">[ Afinador Simples ]</a>
+                <span class="text-frameBorder">•</span>
+                <a href="#webs" class="hover:text-accent transition-colors">[ Plataformas Web ]</a>
                 <span class="text-frameBorder">•</span>
                 <a href="#extensiones" class="hover:text-accent transition-colors">[ Extensiones Chrome ]</a>
                 <span class="text-frameBorder">•</span>
@@ -129,17 +131,39 @@
             </div>
         </section>
 
-        <!-- SECCIÓN II: EXTENSIONES DE NAVEGADOR (CHROME WEB STORE) -->
-        <section id="extensiones" class="space-y-6 pt-4 border-t border-frameBorder">
+        <!-- SECCIÓN II: PLATAFORMAS WEB -->
+        <section id="webs" class="space-y-6 pt-4 border-t border-frameBorder">
             <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-frameBorder pb-2">
                 <h2 class="text-xl sm:text-2xl font-bold text-white font-editorial">
-                    II. Extensiones de Navegador & Utilidades Web
+                    II. Plataformas Web & Publicaciones
                 </h2>
-                <span class="text-xs text-accent font-medium">Publicadas en Chrome Web Store</span>
+                <span class="text-xs text-accent font-medium">Herramientas en Línea & Portales Técnicos</span>
             </div>
 
             <div class="space-y-5 text-xs sm:text-sm">
-                <!-- PRODUCTO 1: TOCKTEXTURE STUDIO -->
+                <!-- WEB 1: TOCKBLOG -->
+                <div class="p-5 rounded-xl bg-page border border-frameBorder space-y-3">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <img src="img/tockblog_logo.png" alt="TockBlog Logo" class="w-10 h-10 rounded-lg bg-black/40 border border-frameBorder p-1 object-cover">
+                            <div>
+                                <h3 class="text-base font-bold text-white font-editorial">TockBlog</h3>
+                                <span class="text-xs text-accent font-medium">Comparativas Técnicas, Análisis y Hardware 3D</span>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://tockblog.com/" target="_blank" class="px-3 py-1.5 rounded-lg bg-frame border border-frameBorder hover:border-accent text-slate-200 text-xs font-semibold transition-all inline-flex items-center gap-1.5">
+                                <span>🌐 tockblog.com</span>
+                                <span class="text-[10px] text-textMuted">↗</span>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="text-textMuted leading-relaxed text-xs">
+                        Plataforma técnica independiente dedicada a comparativas rigurosas, análisis de hardware y accesorios de impresión 3D (Creality, Bambu Lab, Anycubic, Sunlu), secadores de filamento y guías prácticas basadas en datos de rendimiento reales para optimizar la fabricación aditiva.
+                    </p>
+                </div>
+
+                <!-- WEB 2: TOCKTEXTURE STUDIO -->
                 <div class="p-5 rounded-xl bg-page border border-frameBorder space-y-3">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div class="flex items-center gap-3">
@@ -149,21 +173,53 @@
                                 <span class="text-xs text-accent font-medium">GameDev Texture Processor • 100% Client-Side</span>
                             </div>
                         </div>
-                        <div class="flex flex-wrap items-center gap-2">
-                            <a href="https://tocktexture.com/" target="_blank" class="px-3 py-1.5 rounded-lg bg-frame border border-frameBorder hover:border-accent text-slate-200 text-xs font-semibold transition-all">
-                                🌐 tocktexture.com
-                            </a>
-                            <a href="https://chromewebstore.google.com/detail/lmmiaoedpmagoinbfanfefhhaabchjcc?utm_source=item-share-cb" target="_blank" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all shadow-sm">
-                                🧩 Chrome Web Store
+                        <div>
+                            <a href="https://tocktexture.com/" target="_blank" class="px-3 py-1.5 rounded-lg bg-frame border border-frameBorder hover:border-accent text-slate-200 text-xs font-semibold transition-all inline-flex items-center gap-1.5">
+                                <span>🌐 tocktexture.com</span>
+                                <span class="text-[10px] text-textMuted">↗</span>
                             </a>
                         </div>
                     </div>
                     <p class="text-textMuted leading-relaxed text-xs">
-                        Motor de procesamiento y optimización de texturas para videojuegos que opera de manera 100% local en el navegador mediante Web Workers. Incluye escalado Power of Two (POT), inversión Y-Flip en Normal Maps (DirectX / OpenGL), corrección de Alpha Bleed y empaquetado de canales PBR / RMA.
+                        Motor de procesamiento y optimización de texturas para videojuegos que opera de manera 100% local en el navegador mediante Web Workers. Diseñado para preparar assets listos para motores (Unity, Unreal Engine, Godot) con escalado Power of Two (POT), inversión Y-Flip en Normal Maps, corrección de Alpha Bleed y empaquetado de canales PBR / RMA.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN III: EXTENSIONES DE NAVEGADOR (CHROME WEB STORE) -->
+        <section id="extensiones" class="space-y-6 pt-4 border-t border-frameBorder">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-frameBorder pb-2">
+                <h2 class="text-xl sm:text-2xl font-bold text-white font-editorial">
+                    III. Extensiones de Navegador
+                </h2>
+                <span class="text-xs text-accent font-medium">Publicadas en Chrome Web Store</span>
+            </div>
+
+            <div class="space-y-5 text-xs sm:text-sm">
+                <!-- EXTENSIÓN 1: TOCKTEXTURE STUDIO -->
+                <div class="p-5 rounded-xl bg-page border border-frameBorder space-y-3">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <img src="img/tocktexture_logo.png" alt="TockTexture Logo" class="w-10 h-10 rounded-lg bg-black/40 border border-frameBorder p-1 object-contain">
+                            <div>
+                                <h3 class="text-base font-bold text-white font-editorial">TockTexture Studio</h3>
+                                <span class="text-xs text-accent font-medium">Texture Tool para Game Developers</span>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://chromewebstore.google.com/detail/lmmiaoedpmagoinbfanfefhhaabchjcc?utm_source=item-share-cb" target="_blank" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all shadow-sm inline-flex items-center gap-1.5">
+                                <span>🧩 Chrome Web Store</span>
+                                <span class="text-[10px]">↗</span>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="text-textMuted leading-relaxed text-xs">
+                        Extensión de productividad para desarrolladores de videojuegos. Permite invocar la suite de herramientas de TockTexture rápidamente en cualquier pestaña para inspeccionar, redimensionar a POT y empacar canales sin salir del flujo de trabajo del navegador.
                     </p>
                 </div>
 
-                <!-- PRODUCTO 2: IASSETFLOW -->
+                <!-- EXTENSIÓN 2: IASSETFLOW -->
                 <div class="p-5 rounded-xl bg-page border border-frameBorder space-y-3">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div class="flex items-center gap-3">
@@ -174,8 +230,9 @@
                             </div>
                         </div>
                         <div>
-                            <a href="https://chromewebstore.google.com/detail/eolegdphdhojkinalobeenmlkdpbgdfc?utm_source=item-share-cb" target="_blank" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all shadow-sm inline-block">
-                                🧩 Chrome Web Store
+                            <a href="https://chromewebstore.google.com/detail/eolegdphdhojkinalobeenmlkdpbgdfc?utm_source=item-share-cb" target="_blank" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all shadow-sm inline-flex items-center gap-1.5">
+                                <span>🧩 Chrome Web Store</span>
+                                <span class="text-[10px]">↗</span>
                             </a>
                         </div>
                     </div>
@@ -186,10 +243,10 @@
             </div>
         </section>
 
-        <!-- SECCIÓN III: MANIFIESTO Y FILOSOFÍA -->
+        <!-- SECCIÓN IV: MANIFIESTO Y FILOSOFÍA -->
         <section id="manifiesto" class="space-y-3 pt-4 border-t border-frameBorder">
             <h2 class="text-xl sm:text-2xl font-bold text-white font-editorial">
-                III. Filosofía del Estudio
+                IV. Filosofía del Estudio
             </h2>
             <p class="text-xs sm:text-sm text-textMuted leading-relaxed">
                 En <strong>Tock Labs</strong> creemos en la honestidad del software independiente: herramientas que hacen exactamente lo que prometen con rapidez y ligereza. Todo el procesamiento de audio, imágenes y datos se ejecuta de forma estrictamente local en tu propio dispositivo; no implementamos telemetría invasiva, no exigimos inicios de sesión innecesarios y respetamos plenamente la privacidad de tu equipo.
