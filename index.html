@@ -74,7 +74,7 @@
                 <span class="text-frameBorder">•</span>
                 <a href="#manifiesto" class="hover:text-accent transition-colors">[ Filosofía ]</a>
                 <span class="text-frameBorder">•</span>
-                <a href="privacy.html" class="hover:text-accent transition-colors">[ Privacidad ]</a>
+                <a href="privacy.html" onclick="openPrivacyModal(event)" class="hover:text-accent transition-colors cursor-pointer">[ Privacidad ]</a>
             </nav>
 
             <hr class="border-t border-frameBorder/80 pt-2">
@@ -258,7 +258,7 @@
                     <strong>TOCK LABS</strong> • © 2026 Todos los derechos reservados.
                 </div>
                 <div class="flex flex-wrap items-center justify-center gap-3">
-                    <a href="privacy.html" class="hover:text-accent underline transition-colors">Política de Privacidad</a>
+                    <a href="privacy.html" onclick="openPrivacyModal(event)" class="hover:text-accent underline transition-colors cursor-pointer">Política de Privacidad</a>
                     <span>•</span>
                     <a href="mailto:tocklabs@gmail.com" class="hover:text-accent transition-colors">tocklabs@gmail.com</a>
                 </div>
@@ -271,5 +271,115 @@
 
     </div>
 
+    <!-- Modal Flotante de Política de Privacidad (Mismas Dimensiones max-w-5xl) -->
+    <div id="privacy-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm p-3 sm:p-6 flex items-center justify-center transition-opacity duration-200">
+        <!-- Backdrop click para cerrar -->
+        <div class="fixed inset-0 -z-10" onclick="closePrivacyModal()"></div>
+
+        <!-- Ventana Modal con las mismas dimensiones exactas del cuerpo (max-w-5xl) -->
+        <div class="w-full max-w-5xl max-h-[92vh] bg-frame border border-frameBorder rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+            <!-- Barra Superior del Modal -->
+            <div class="px-6 py-4 border-b border-frameBorder flex items-center justify-between bg-page/80">
+                <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-accent animate-pulse"></span>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-accent">Documento Legal • Tock Labs</span>
+                </div>
+                <button onclick="closePrivacyModal()" class="px-3 py-1.5 rounded-lg bg-frame border border-frameBorder hover:border-accent text-textMuted hover:text-white text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer">
+                    <span>✕ Cerrar</span>
+                    <span class="text-[10px] text-textMuted/70">(Esc)</span>
+                </button>
+            </div>
+
+            <!-- Contenido con Scroll Interno -->
+            <div class="overflow-y-auto p-6 sm:px-10 sm:py-8 space-y-6 text-xs sm:text-sm text-textMuted leading-relaxed">
+                <header class="border-b border-frameBorder pb-4 space-y-1">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white font-editorial">Política de Privacidad</h2>
+                    <p class="text-xs text-textMuted">Afinador Simple y Ecosistema Digital • Última actualización: Noviembre 2026</p>
+                </header>
+
+                <div class="p-4 rounded-xl bg-page border border-frameBorder text-xs sm:text-sm text-textMain leading-relaxed">
+                    En <strong>Tock Labs</strong> valoramos y respetamos plenamente tu privacidad. Nuestras aplicaciones y herramientas han sido diseñadas bajo el principio de <strong>procesamiento estrictamente local</strong> y mínimo acceso a datos.
+                </div>
+
+                <div class="space-y-6 text-xs sm:text-sm">
+                    <div>
+                        <h3 class="text-sm sm:text-base font-bold text-white mb-1.5 font-editorial">1. Uso del Micrófono (Afinador Simples)</h3>
+                        <p class="mb-2">El permiso de acceso al micrófono del dispositivo se utiliza única y exclusivamente para:</p>
+                        <ul class="list-disc list-inside space-y-1 pl-2 text-textMain mb-2">
+                            <li>Procesar en tiempo real la frecuencia acústica de tu instrumento mediante el afinador cromático.</li>
+                            <li>Permitir la grabación de tus ensayos cuando pulsas deliberadamente el botón de grabar.</li>
+                        </ul>
+                        <p class="text-xs text-accent">
+                            En ningún momento se transmiten, almacenan o analizan muestras de audio en servidores remotos o en la nube. Todo el procesamiento matemático de tono ocurre estrictamente en la memoria RAM de tu dispositivo de manera efímera.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm sm:text-base font-bold text-white mb-1.5 font-editorial">2. Almacenamiento de Grabaciones</h3>
+                        <p>
+                            Las grabaciones de audio que realices permanecen de manera 100% privada y local en el almacenamiento interno protegido de tu propio teléfono. Eres libre de compartirlas o eliminarlas cuando lo desees.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm sm:text-base font-bold text-white mb-1.5 font-editorial">3. No Recopilación de Datos Personales</h3>
+                        <p class="mb-1.5">Nuestras aplicaciones y herramientas:</p>
+                        <ul class="list-disc list-inside space-y-1 pl-2 text-textMain">
+                            <li>No requieren registro de usuario ni inicio de sesión obligatorio.</li>
+                            <li>No solicitan correos electrónicos, nombres ni números telefónicos para su uso básico.</li>
+                            <li>No recopilan contactos, ubicación geográfica ni datos sensibles de los usuarios.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm sm:text-base font-bold text-white mb-1.5 font-editorial">4. Publicidad y Facturación Segura</h3>
+                        <p class="mb-2">
+                            En las versiones gratuitas con anuncios, se utilizan los servicios estándar de <strong>Google AdMob</strong> cumpliendo estrictamente con las directrices de consentimiento y protección de datos de Google Play.
+                        </p>
+                        <p>
+                            Para la compra integrada de eliminación de publicidad, las transacciones se realizan de forma cifrada y directa a través del sistema oficial de <strong>Google Play Billing</strong>. Tock Labs no tiene acceso a tus datos bancarios ni números de tarjeta de crédito.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm sm:text-base font-bold text-white mb-1.5 font-editorial">5. Contacto Legal</h3>
+                        <p>
+                            Si tienes dudas, consultas o comentarios respecto a esta política, puedes contactarnos directamente en:  
+                            <a href="mailto:tocklabs@gmail.com" class="text-accent underline font-semibold">tocklabs@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-frameBorder flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-textMuted">
+                    <span>Tock Labs © 2026. Todos los derechos reservados.</span>
+                    <button onclick="closePrivacyModal()" class="px-5 py-2.5 rounded-xl bg-accent text-slate-950 font-bold text-xs hover:bg-accent/90 transition-all cursor-pointer shadow-md shadow-accent/20">
+                        Entendido / Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de Control del Modal -->
+    <script>
+        function openPrivacyModal(e) {
+            if (e) e.preventDefault();
+            const modal = document.getElementById('privacy-modal');
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closePrivacyModal() {
+            const modal = document.getElementById('privacy-modal');
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closePrivacyModal();
+            }
+        });
+    </script>
 </body>
 </html>
